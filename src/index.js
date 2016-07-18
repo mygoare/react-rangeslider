@@ -36,6 +36,7 @@ class Slider extends Component {
 		orientation: PropTypes.string,
 		onChange: PropTypes.func,
 		className: PropTypes.string,
+		theme: PropTypes.string,
 	}
 
 	static defaultProps = {
@@ -44,6 +45,7 @@ class Slider extends Component {
 		step: 1,
 		value: 0,
 		orientation: 'horizontal',
+		theme: 'default',
 	}
 
 	state = {
@@ -161,7 +163,7 @@ class Slider extends Component {
 
   render() {
   	let dimension, direction, position, coords, fillStyle, handleStyle;
-  	let { value, orientation, className } = this.props;
+  	let { value, orientation, className, theme } = this.props;
 
   	dimension = constants.orientation[orientation].dimension;
   	direction = constants.orientation[orientation].direction;
@@ -175,7 +177,7 @@ class Slider extends Component {
   	return (
   		<div
 	  		ref="slider"
-	  		className={cx('rangeslider ', 'rangeslider-' + orientation, className)}
+	  		className={cx('rangeslider ', 'rangeslider-' + orientation, className, theme)}
 	  		onMouseDown={this.handleDrag}
 	  		onClick={this.handleNoop}>
 	  		<div
